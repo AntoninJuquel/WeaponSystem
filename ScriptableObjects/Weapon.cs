@@ -6,11 +6,10 @@ namespace WeaponSystem
     public class Weapon : ScriptableObject
     {
         public Sprite sprite;
-
         public int damage;
-
+        public float time;
         public State state;
-        public Barrel[] barrels;
+        public WeaponBarrelEmission[] barrels;
         public Ammunition ammunition;
         public MuzzleFlash muzzleFlash;
 
@@ -45,5 +44,15 @@ namespace WeaponSystem
         Cooling,
         WaitingTriggerUp,
         Reloading
+    }
+
+    [System.Serializable]
+    public class WeaponBarrelEmission
+    {
+        public Barrel barrel;
+        public Vector3 position;
+        public float angle;
+        public int emissionCount = 1;
+        public float radius = 1;
     }
 }

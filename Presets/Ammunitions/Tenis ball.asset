@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f8ac4633f74488a0910d83df3195c9, type: 3}
   m_Name: Tenis ball
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 15
   distance: 100
   size: 0.3
   gravity: 1
   drag: 0
-  bounce: 1
   lifetimeLoss: 0
   dampen: 0
   sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
@@ -51,3 +50,4 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+  physicsMaterial: {fileID: 6200000, guid: c3bdf72905e70294194fd252099655c9, type: 2}

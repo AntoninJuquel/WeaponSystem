@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace WeaponSystem
 {
-    [RequireComponent(typeof(SpriteRenderer))]
     public class WeaponInventory : MonoBehaviour
     {
         [SerializeField] private List<Weapon> weapons;
-        [SerializeField] private UnityEvent onWeaponChanged;
+        public UnityEvent<Weapon> onWeaponChanged;
         private int _weaponIndex;
         private IWeaponUser _weaponUser;
-        public Weapon CurrentWeapon => weapons[_weaponIndex];
+        private Weapon CurrentWeapon => weapons[_weaponIndex];
         public bool HasWeapon => weapons.Count > 0;
-        private SpriteRenderer _sr;
 
         private void Awake()
         {
@@ -31,9 +28,11 @@ namespace WeaponSystem
             {
                 weapons[i] = Instantiate(weapons[i]);
             }
+        }
 
-            _sr = GetComponent<SpriteRenderer>();
-            _sr.sprite = CurrentWeapon.sprite;
+        private void Start()
+        {
+            onWeaponChanged?.Invoke(CurrentWeapon);
         }
 
         private void OnEnable()
@@ -52,8 +51,7 @@ namespace WeaponSystem
         {
             CurrentWeapon.lastTimeHeld = Time.time;
             _weaponIndex = delta < 0 ? (_weaponIndex + weapons.Count - 1) % weapons.Count : (_weaponIndex + 1) % weapons.Count;
-            _sr.sprite = CurrentWeapon.sprite;
-            onWeaponChanged?.Invoke();
+            onWeaponChanged?.Invoke(CurrentWeapon);
         }
 
         public void Add(Weapon weapon)

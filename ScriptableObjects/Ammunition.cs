@@ -10,11 +10,11 @@ namespace WeaponSystem
         public float size;
         public float gravity;
         public float drag;
-        public float bounce;
-        public float lifetimeLoss;
-        public float dampen;
+        [Range(0f, 1f)] public float lifetimeLoss;
+        [Range(0f, 1f)] public float dampen;
         public Sprite sprite;
         public Color color;
         public Gradient colorOverLifetime;
+        public PhysicsMaterial2D physicsMaterial;
     }
 }
