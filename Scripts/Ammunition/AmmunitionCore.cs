@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace WeaponSystem
 {
-    public class ProjectileCore : MonoBehaviour
+    public class AmmunitionCore : MonoBehaviour
     {
-        private ProjectileDisplacement _displacement;
-        private ProjectileSprite _sprite;
+        private AmmunitionDisplacement _displacement;
+        private AmmunitionSprite _sprite;
 
         private float _timeToDie;
 
@@ -14,8 +14,8 @@ namespace WeaponSystem
 
         private void Awake()
         {
-            _displacement = GetComponent<ProjectileDisplacement>();
-            _sprite = GetComponent<ProjectileSprite>();
+            _displacement = GetComponent<AmmunitionDisplacement>();
+            _sprite = GetComponent<AmmunitionSprite>();
         }
 
         public void Initialize(Ammunition ammunition)

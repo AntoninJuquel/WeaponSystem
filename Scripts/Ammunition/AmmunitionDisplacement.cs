@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace WeaponSystem
 {
-    public class ProjectileDisplacement : MonoBehaviour
+    public class AmmunitionDisplacement : MonoBehaviour
     {
         private Rigidbody2D _rb;
         private Ammunition _ammunition;

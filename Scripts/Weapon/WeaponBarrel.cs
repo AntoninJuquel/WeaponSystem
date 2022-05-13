@@ -5,7 +5,7 @@ namespace WeaponSystem
 {
     public class WeaponBarrel : MonoBehaviour
     {
-        [SerializeField] private ProjectileCore projectile;
+        [SerializeField] private AmmunitionCore ammunition;
         public UnityEvent<Vector3, Weapon> onProjectileShoot;
 
         public void Shoot(Weapon weapon)
@@ -42,7 +42,7 @@ namespace WeaponSystem
                     var direction = Quaternion.Euler(0, 0, shootArc) * shootAngle;
                     var position = transform.position + weaponBarrelEmission.position + direction.normalized * Random.Range(minRadius, maxRadius);
 
-                    var projectileCore = Instantiate(projectile, position, Quaternion.identity);
+                    var projectileCore = Instantiate(ammunition, position, Quaternion.identity);
                     projectileCore.transform.right = direction;
                     projectileCore.Initialize(weapon.ammunition);
 

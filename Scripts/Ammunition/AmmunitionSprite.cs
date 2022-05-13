@@ -2,7 +2,7 @@
 
 namespace WeaponSystem
 {
-    public class ProjectileSprite : MonoBehaviour
+    public class AmmunitionSprite : MonoBehaviour
     {
         private SpriteRenderer _sr;
 
