@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ce64af020ab164f9ddc2b51a504415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 5130886996143848367, guid: 7b2a535e005a2d148b42e163677ea3af, type: 3}
+  ammunition: {fileID: 5130886996143848367, guid: 7b2a535e005a2d148b42e163677ea3af, type: 3}
   onProjectileShoot:
     m_PersistentCalls:
       m_Calls: []
