@@ -17,7 +17,7 @@ namespace WeaponSystem
                 var minRadius = (1 - weaponBarrelEmission.barrel.thickness) * weaponBarrelEmission.radius;
                 var maxRadius = weaponBarrelEmission.radius;
 
-                var shootAngle = Quaternion.Euler(0, 0, weaponBarrelEmission.angle) * transform.root.right;
+                var shootAngle = Quaternion.Euler(0, 0, weaponBarrelEmission.angle) * transform.right;
                 for (var i = 0; i < weaponBarrelEmission.emissionCount; i++)
                 {
                     var shootArc = 0f;

@@ -194,39 +194,5 @@ namespace WeaponSystem
             _weapon = weapon;
             StartCoroutine(Start());
         }
-
-        // private void Shot(Barrel barrel)
-        // {
-        //     var main = _ps.main;
-        //     main.startLifetimeMultiplier = _weapon.ammunition.distance / _weapon.ammunition.speed;
-        //     main.startSpeedMultiplier = _weapon.ammunition.speed;
-        //     main.startSizeMultiplier = _weapon.ammunition.size;
-        //     main.startColor = _weapon.ammunition.color;
-        //     main.gravityModifierMultiplier = _weapon.ammunition.gravity;
-        //
-        //     var shape = _ps.shape;
-        //     shape.arc = barrel.spread;
-        //     shape.radiusThickness = barrel.thickness;
-        //     shape.arcMode = barrel.arcMode;
-        //     shape.position = barrel.position;
-        //     shape.rotation = Vector3.forward * (90f + (barrel.angle - shape.arc * .5f));
-        //     shape.radius = barrel.radius;
-        //
-        //     var textureSheetAnimation = _ps.textureSheetAnimation;
-        //     textureSheetAnimation.SetSprite(0, _weapon.ammunition.sprite);
-        //
-        //     var colorOverLifetime = _ps.colorOverLifetime;
-        //     colorOverLifetime.color = _weapon.ammunition.colorOverLifetime;
-        //
-        //     var limitVelocityOverLifeTime = _ps.limitVelocityOverLifetime;
-        //     limitVelocityOverLifeTime.drag = _weapon.ammunition.drag;
-        //
-        //     var collision = _ps.collision;
-        //     collision.bounceMultiplier = _weapon.ammunition.physicsMaterial.bounciness;
-        //     collision.lifetimeLossMultiplier = _weapon.ammunition.lifetimeLoss;
-        //     collision.dampenMultiplier = _weapon.ammunition.dampen;
-        //
-        //     _ps.Emit(barrel.emissionCount);
-        // }
     }
 }
