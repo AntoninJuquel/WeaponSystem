@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,21 +18,20 @@ namespace WeaponSystem
         {
             _weaponUser = GetComponentInParent<IWeaponUser>();
 
-            if (_weaponUser == null)
-            {
-                Debug.LogWarning("IWeaponUser interface is not implemented on gameObject disabling the component", gameObject);
-                enabled = false;
-                return;
-            }
-
             for (var i = 0; i < weapons.Count; i++)
             {
                 weapons[i] = Instantiate(weapons[i]);
             }
+
+            if (_weaponUser != null) return;
+
+            Debug.LogWarning("IWeaponUser interface is not implemented on parent disabling the component", gameObject);
+            enabled = false;
         }
 
-        private void Start()
+        private IEnumerator Start()
         {
+            yield return new WaitUntil(() => HasWeapon);
             onWeaponChanged?.Invoke(CurrentWeapon);
         }
 
@@ -49,6 +49,7 @@ namespace WeaponSystem
 
         private void OnSwitchWeapon(object sender, int delta)
         {
+            if (!HasWeapon) return;
             CurrentWeapon.lastTimeHeld = Time.time;
             _weaponIndex = delta < 0 ? (_weaponIndex + weapons.Count - 1) % weapons.Count : (_weaponIndex + 1) % weapons.Count;
             onWeaponChanged?.Invoke(CurrentWeapon);

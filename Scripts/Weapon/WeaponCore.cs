@@ -20,14 +20,6 @@ namespace WeaponSystem
         private void Awake()
         {
             _weaponUser = GetComponentInParent<IWeaponUser>();
-
-            if (_weaponUser == null)
-            {
-                Debug.LogWarning("IWeaponUser interface is not implemented on gameObject disabling the component", gameObject);
-                enabled = false;
-                return;
-            }
-
             _weaponInventory = GetComponent<WeaponInventory>();
             _weaponBarrel = GetComponent<WeaponBarrel>();
         }
@@ -42,9 +34,8 @@ namespace WeaponSystem
             _weaponInventory.onWeaponChanged.RemoveListener(OnWeaponChanged);
         }
 
-        private IEnumerator Start()
+        private IEnumerator HandleCurrentWeapon()
         {
-            yield return new WaitUntil(() => _weaponInventory.HasWeapon);
             yield return StateHandler();
             StartCoroutine(HeatRecovery());
 
@@ -192,7 +183,7 @@ namespace WeaponSystem
         {
             StopAllCoroutines();
             _weapon = weapon;
-            StartCoroutine(Start());
+            StartCoroutine(HandleCurrentWeapon());
         }
     }
 }
