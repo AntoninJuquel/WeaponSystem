@@ -9,6 +9,7 @@ namespace WeaponSystem
         private AmmunitionSprite _sprite;
 
         private float _timeToDie;
+        private int _damage;
 
         private Ammunition _ammunition;
 
@@ -18,7 +19,7 @@ namespace WeaponSystem
             _sprite = GetComponent<AmmunitionSprite>();
         }
 
-        public void Initialize(Ammunition ammunition)
+        public void Initialize(Ammunition ammunition, int damage)
         {
             transform.localScale = Vector3.one * ammunition.size;
 
@@ -27,6 +28,7 @@ namespace WeaponSystem
             _timeToDie = Time.time + ammunition.distance / ammunition.speed;
 
             _ammunition = ammunition;
+            _damage = damage;
 
             StartCoroutine(LifeTime());
         }
@@ -40,6 +42,8 @@ namespace WeaponSystem
         private void OnCollisionEnter2D(Collision2D col)
         {
             _timeToDie *= (1 - _ammunition.lifetimeLoss);
+            var takeHit = col.gameObject.GetComponent<ITakeHit>();
+            takeHit?.Hit(_damage);
         }
     }
 }

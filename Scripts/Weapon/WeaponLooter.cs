@@ -3,7 +3,6 @@ using UnityEngine.Events;
 
 namespace WeaponSystem
 {
-    [RequireComponent(typeof(WeaponInventory))]
     public class WeaponLooter : MonoBehaviour
     {
         [SerializeField] private UnityEvent<Weapon> onLoot;
@@ -11,7 +10,7 @@ namespace WeaponSystem
 
         private void Awake()
         {
-            _weaponInventory = GetComponent<WeaponInventory>();
+            _weaponInventory = GetComponentInChildren<WeaponInventory>();
         }
 
         private void OnTriggerEnter2D(Collider2D col)

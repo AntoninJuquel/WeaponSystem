@@ -44,7 +44,7 @@ namespace WeaponSystem
 
                     var projectileCore = Instantiate(ammunition, position, Quaternion.identity);
                     projectileCore.transform.right = direction;
-                    projectileCore.Initialize(weapon.ammunition);
+                    projectileCore.Initialize(weapon.ammunition, weapon.damage);
 
                     onProjectileShoot?.Invoke(position, weapon);
                 }
