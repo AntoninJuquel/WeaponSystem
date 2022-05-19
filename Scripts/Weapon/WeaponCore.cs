@@ -9,17 +9,17 @@ namespace WeaponSystem
     public class WeaponCore : MonoBehaviour
     {
         [SerializeField] private UnityEvent<Weapon> onShoot;
-        private IWeaponUser _weaponUser;
+        private IHandleWeapon _handleWeapon;
         private WeaponInventory _weaponInventory;
         private WeaponBarrel _weaponBarrel;
 
         private Weapon _weapon;
         private bool HasAmmoLeft => _weapon.magazine > 0;
-        private bool TriggerPulled => _weaponUser.PullTrigger;
+        private bool TriggerPulled => _handleWeapon.PullTrigger;
 
         private void Awake()
         {
-            _weaponUser = GetComponentInParent<IWeaponUser>();
+            _handleWeapon = GetComponentInParent<IHandleWeapon>();
             _weaponInventory = GetComponent<WeaponInventory>();
             _weaponBarrel = GetComponent<WeaponBarrel>();
         }

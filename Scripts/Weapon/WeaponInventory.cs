@@ -10,20 +10,20 @@ namespace WeaponSystem
         [SerializeField] private List<Weapon> weapons;
         public UnityEvent<Weapon> onWeaponChanged;
         private int _weaponIndex;
-        private IWeaponUser _weaponUser;
+        private IHandleWeapon _handleWeapon;
         private Weapon CurrentWeapon => weapons[_weaponIndex];
         public bool HasWeapon => weapons.Count > 0;
 
         private void Awake()
         {
-            _weaponUser = GetComponentInParent<IWeaponUser>();
+            _handleWeapon = GetComponentInParent<IHandleWeapon>();
 
             for (var i = 0; i < weapons.Count; i++)
             {
                 weapons[i] = Instantiate(weapons[i]);
             }
 
-            if (_weaponUser != null) return;
+            if (_handleWeapon != null) return;
 
             Debug.LogWarning("IWeaponUser interface is not implemented on parent disabling the component", gameObject);
             enabled = false;
@@ -37,17 +37,17 @@ namespace WeaponSystem
 
         private void OnEnable()
         {
-            if (_weaponUser == null) return;
-            _weaponUser.onSwitchWeapon += OnSwitchWeapon;
+            if (_handleWeapon == null) return;
+            _handleWeapon.OnSwitchWeapon += OnSwitchHandleWeapon;
         }
 
         private void OnDisable()
         {
-            if (_weaponUser == null) return;
-            _weaponUser.onSwitchWeapon -= OnSwitchWeapon;
+            if (_handleWeapon == null) return;
+            _handleWeapon.OnSwitchWeapon -= OnSwitchHandleWeapon;
         }
 
-        private void OnSwitchWeapon(object sender, int delta)
+        private void OnSwitchHandleWeapon(object sender, int delta)
         {
             if (!HasWeapon) return;
             CurrentWeapon.lastTimeHeld = Time.time;
