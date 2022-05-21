@@ -7,6 +7,7 @@ namespace WeaponSystem
     {
         [SerializeField] private AmmunitionCore ammunition;
         public UnityEvent<Vector3, Weapon> onProjectileShoot;
+        public UnityEvent onAmmunitionHit, onAmmunitionCollision;
 
         public void Shoot(Weapon weapon)
         {
@@ -44,7 +45,7 @@ namespace WeaponSystem
 
                     var projectileCore = Instantiate(ammunition, position, Quaternion.identity);
                     projectileCore.transform.right = direction;
-                    projectileCore.Initialize(weapon.ammunition, weapon.damage);
+                    projectileCore.Initialize(weapon.ammunition, weapon.damage, onAmmunitionHit, onAmmunitionCollision);
 
                     onProjectileShoot?.Invoke(position, weapon);
                 }

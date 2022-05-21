@@ -4,13 +4,12 @@ using UnityEngine.Events;
 
 namespace WeaponSystem
 {
-    [RequireComponent(typeof(WeaponInventory))]
     [RequireComponent(typeof(WeaponBarrel))]
     public class WeaponCore : MonoBehaviour
     {
+        [SerializeField] private WeaponInventory weaponInventory;
         [SerializeField] private UnityEvent<Weapon> onShoot;
         private IHandleWeapon _handleWeapon;
-        private WeaponInventory _weaponInventory;
         private WeaponBarrel _weaponBarrel;
 
         private Weapon _weapon;
@@ -20,18 +19,17 @@ namespace WeaponSystem
         private void Awake()
         {
             _handleWeapon = GetComponentInParent<IHandleWeapon>();
-            _weaponInventory = GetComponent<WeaponInventory>();
             _weaponBarrel = GetComponent<WeaponBarrel>();
         }
 
         private void OnEnable()
         {
-            _weaponInventory.onWeaponChanged.AddListener(OnWeaponChanged);
+            weaponInventory.onWeaponChanged.AddListener(OnWeaponChanged);
         }
 
         private void OnDisable()
         {
-            _weaponInventory.onWeaponChanged.RemoveListener(OnWeaponChanged);
+            weaponInventory.onWeaponChanged.RemoveListener(OnWeaponChanged);
         }
 
         private IEnumerator HandleCurrentWeapon()
@@ -179,10 +177,10 @@ namespace WeaponSystem
             _weapon.heat = 0;
         }
 
-        private void OnWeaponChanged(Weapon weapon)
+        private void OnWeaponChanged(Weapon previousWeapon, Weapon currenWeapon, Weapon nextWeapon)
         {
             StopAllCoroutines();
-            _weapon = weapon;
+            _weapon = currenWeapon;
             StartCoroutine(HandleCurrentWeapon());
         }
     }

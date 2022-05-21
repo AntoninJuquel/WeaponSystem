@@ -15,7 +15,7 @@ namespace WeaponSystem
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            var isWeapon = col.GetComponent<WeaponLoot>();
+            var isWeapon = col.GetComponent<WeaponDrop>();
             if (isWeapon)
             {
                 _weaponInventory.Add(isWeapon.Loot());

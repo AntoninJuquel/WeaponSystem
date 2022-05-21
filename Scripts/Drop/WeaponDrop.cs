@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-using TMPro;
+﻿using TMPro;
+using UnityEngine;
 
 namespace WeaponSystem
 {
-    public class WeaponLoot : MonoBehaviour
+    public class WeaponDrop : MonoBehaviour
     {
         [SerializeField] private Weapon[] weapons;
         private Weapon _weapon;

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2731732561768528052}
-  - component: {fileID: 4258100259010106192}
   - component: {fileID: 2731732561768528051}
   - component: {fileID: 508283546538660764}
   - component: {fileID: 7217182353648021431}
@@ -37,22 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4258100259010106192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2731732561768528054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79d6bc6804234605ba8357f9105f1cde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapons: []
-  onWeaponChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &2731732561768528051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,6 +65,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammunition: {fileID: 5130886996143848367, guid: 7b2a535e005a2d148b42e163677ea3af, type: 3}
   onProjectileShoot:
+    m_PersistentCalls:
+      m_Calls: []
+  onAmmunitionHit:
+    m_PersistentCalls:
+      m_Calls: []
+  onAmmunitionCollision:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &7217182353648021431

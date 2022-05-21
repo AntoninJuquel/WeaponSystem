@@ -8,19 +8,23 @@ namespace WeaponSystem
     public class WeaponInventory : MonoBehaviour
     {
         [SerializeField] private List<Weapon> weapons;
-        public UnityEvent<Weapon> onWeaponChanged;
+        public UnityEvent<Weapon, Weapon, Weapon> onWeaponChanged;
         private int _weaponIndex;
         private IHandleWeapon _handleWeapon;
         private Weapon CurrentWeapon => weapons[_weaponIndex];
-        public bool HasWeapon => weapons.Count > 0;
+        private Weapon NextWeapon => weapons[(_weaponIndex + 1) % weapons.Count];
+        private Weapon PreviousWeapon => weapons[(_weaponIndex + weapons.Count - 1) % weapons.Count];
+        private bool HasWeapon => weapons.Count > 0;
 
         private void Awake()
         {
-            _handleWeapon = GetComponentInParent<IHandleWeapon>();
+            _handleWeapon = GetComponent<IHandleWeapon>();
 
             for (var i = 0; i < weapons.Count; i++)
             {
+                var weaponName = weapons[i].name;
                 weapons[i] = Instantiate(weapons[i]);
+                weapons[i].name = weaponName;
             }
 
             if (_handleWeapon != null) return;
@@ -32,7 +36,7 @@ namespace WeaponSystem
         private IEnumerator Start()
         {
             yield return new WaitUntil(() => HasWeapon);
-            onWeaponChanged?.Invoke(CurrentWeapon);
+            onWeaponChanged?.Invoke(PreviousWeapon, CurrentWeapon, NextWeapon);
         }
 
         private void OnEnable()
@@ -52,12 +56,14 @@ namespace WeaponSystem
             if (!HasWeapon) return;
             CurrentWeapon.lastTimeHeld = Time.time;
             _weaponIndex = delta < 0 ? (_weaponIndex + weapons.Count - 1) % weapons.Count : (_weaponIndex + 1) % weapons.Count;
-            onWeaponChanged?.Invoke(CurrentWeapon);
+            onWeaponChanged?.Invoke(PreviousWeapon, CurrentWeapon, NextWeapon);
         }
 
         public void Add(Weapon weapon)
         {
-            weapons.Add(Instantiate(weapon));
+            var newWeapon = Instantiate(weapon);
+            newWeapon.name = weapon.name;
+            weapons.Add(newWeapon);
         }
     }
 }

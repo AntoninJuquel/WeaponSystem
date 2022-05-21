@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace WeaponSystem
 {
@@ -12,6 +13,7 @@ namespace WeaponSystem
         private int _damage;
 
         private Ammunition _ammunition;
+        private UnityEvent _onHit, _onCollision;
 
         private void Awake()
         {
@@ -19,7 +21,7 @@ namespace WeaponSystem
             _sprite = GetComponent<AmmunitionSprite>();
         }
 
-        public void Initialize(Ammunition ammunition, int damage)
+        public void Initialize(Ammunition ammunition, int damage, UnityEvent onHit, UnityEvent onCollision)
         {
             transform.localScale = Vector3.one * ammunition.size;
 
@@ -29,6 +31,9 @@ namespace WeaponSystem
 
             _ammunition = ammunition;
             _damage = damage;
+
+            _onHit = onHit;
+            _onCollision = onCollision;
 
             StartCoroutine(LifeTime());
         }
@@ -42,8 +47,17 @@ namespace WeaponSystem
         private void OnCollisionEnter2D(Collision2D col)
         {
             _timeToDie *= (1 - _ammunition.lifetimeLoss);
+
             var takeHit = col.gameObject.GetComponent<ITakeHit>();
-            takeHit?.Hit(_damage);
+            if (takeHit != null)
+            {
+                takeHit.Hit(_damage);
+                _onHit?.Invoke();
+            }
+            else
+            {
+                _onCollision?.Invoke();
+            }
         }
     }
 }

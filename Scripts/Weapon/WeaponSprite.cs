@@ -26,9 +26,9 @@ namespace WeaponSystem
             _weaponInventory.onWeaponChanged.RemoveListener(OnWeaponChanged);
         }
 
-        private void OnWeaponChanged(Weapon weapon)
+        private void OnWeaponChanged(Weapon previousWeapon, Weapon currenWeapon, Weapon nextWeapon)
         {
-            _sr.sprite = weapon.sprite;
+            _sr.sprite = currenWeapon.sprite;
         }
     }
 }
