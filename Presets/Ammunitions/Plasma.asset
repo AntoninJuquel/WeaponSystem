@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9f8ac4633f74488a0910d83df3195c9, type: 3}
-  m_Name: Tenis ball
+  m_Name: Plasma
   m_EditorClassIdentifier: 
   speed: 15
   distance: 100
   size: 0.3
-  gravity: 1
+  gravity: 0
   drag: 0
   lifetimeLoss: 0
   dampen: 0

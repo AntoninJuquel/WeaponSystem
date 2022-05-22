@@ -1,6 +1,6 @@
 ﻿namespace WeaponSystem
 {
-    public interface ITakeHit
+    public interface ITakeAmmunitionHit
     {
         void Hit(int amount);
     }

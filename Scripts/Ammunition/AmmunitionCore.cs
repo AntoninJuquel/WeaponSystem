@@ -48,7 +48,7 @@ namespace WeaponSystem
         {
             _timeToDie *= (1 - _ammunition.lifetimeLoss);
 
-            var takeHit = col.gameObject.GetComponent<ITakeHit>();
+            var takeHit = col.gameObject.GetComponent<ITakeAmmunitionHit>();
             if (takeHit != null)
             {
                 takeHit.Hit(_damage);

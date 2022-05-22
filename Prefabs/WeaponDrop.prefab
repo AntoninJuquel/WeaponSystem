@@ -58,6 +58,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a68ae9a1e22d69b4eb41feecbf95b404, type: 2}
   - {fileID: 11400000, guid: 07cfeeb9d21c22e4187fc659c8a4ee5e, type: 2}
   - {fileID: 11400000, guid: 7ffeef6097c3e7147bc9c7e30cd946ef, type: 2}
+  - {fileID: 11400000, guid: d3cd3bfd9a45d72498040232b4d0d261, type: 2}
+  - {fileID: 11400000, guid: df9e5ade93c9b744d934e0be5c6dc254, type: 2}
 --- !u!23 &6468429528987580598
 MeshRenderer:
   m_ObjectHideFlags: 0

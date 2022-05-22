@@ -63,7 +63,9 @@ namespace WeaponSystem
         {
             var newWeapon = Instantiate(weapon);
             newWeapon.name = weapon.name;
+            if (weapons.Exists(w => w.name == newWeapon.name)) return;
             weapons.Add(newWeapon);
+            onWeaponChanged?.Invoke(PreviousWeapon, CurrentWeapon, NextWeapon);
         }
     }
 }

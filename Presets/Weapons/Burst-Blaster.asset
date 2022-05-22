@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcc13d65108248e5ba02d4d5f9970837, type: 3}
-  m_Name: Minigun
+  m_Name: Burst-Blaster
   m_EditorClassIdentifier: 
-  sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  sprite: {fileID: 21300000, guid: c824e320b717ca74e9a5fb5dded94eca, type: 3}
   damage: 1
   time: 0
   state: 0
@@ -22,20 +22,22 @@ MonoBehaviour:
     angle: 0
     emissionCount: 1
     radius: 1
-  ammunition: {fileID: 11400000, guid: 9df49b2f3f4f69043a163d0555da7b08, type: 2}
+  ammunition: {fileID: 11400000, guid: b1c8b33fc3a0a0c49b49c565927ec4b9, type: 2}
   muzzleFlash: {fileID: 11400000, guid: b82720f8ef725b045b0c1c9807e59ce9, type: 2}
   fireModes:
+  - {fileID: 11400000, guid: 507416922e026134e8cead03a25e2154, type: 2}
   - {fileID: 11400000, guid: e119bbaff2f4f024c8bddcce88979f81, type: 2}
+  - {fileID: 11400000, guid: 38e0b99763c43d24d8dfa17563e4740c, type: 2}
   fireModeIndex: 0
-  fireRate: 4000
-  burstRate: 0
-  reloadTime: 0.015
+  fireRate: 1000
+  burstRate: 1000
+  reloadTime: 0.06
   chargeTime: 0
   heat: 0
   heatCapacity: 0
   heatPerShot: 0
   heatRecoveryRate: 0
   heatRecoveryDelay: 0
-  magazine: 1000
-  capacity: 1000
+  magazine: 26
+  capacity: 26
   lastTimeHeld: 0

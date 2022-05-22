@@ -4,7 +4,7 @@ namespace WeaponSystem
 {
     public interface IHandleWeapon
     {
-        bool PullTrigger { get; }
+        bool PullTrigger { get; set; }
         public event EventHandler<int> OnSwitchWeapon;
     }
 }
