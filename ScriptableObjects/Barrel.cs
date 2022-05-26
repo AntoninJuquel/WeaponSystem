@@ -2,7 +2,7 @@
 
 namespace WeaponSystem
 {
-    [CreateAssetMenu(menuName = "WeaponSystem/Barrel")]
+    [CreateAssetMenu(menuName = "Weapons/Barrel")]
     public class Barrel : ScriptableObject
     {
         [Range(0f, 1f)] public float thickness;
