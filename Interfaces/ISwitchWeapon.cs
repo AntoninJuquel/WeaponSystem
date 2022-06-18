@@ -4,6 +4,6 @@ namespace WeaponSystem
 {
     public interface ISwitchWeapon
     {
-        public event EventHandler<int> OnSwitchWeapon;
+        public event Action<int> OnSwitchWeapon;
     }
 }

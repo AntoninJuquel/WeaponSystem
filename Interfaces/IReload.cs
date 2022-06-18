@@ -4,6 +4,6 @@ namespace WeaponSystem
 {
     public interface IReload
     {
-        public event EventHandler OnReload;
+        public event Action OnReload;
     }
 }

@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 455e54b7fa8b4664bfb50397c2f5fa9d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - <AmmunitionPrefab>k__BackingField: {fileID: 2891141737618397039, guid: 8d06f7b1c4432684d9c3b168ef32c6c4, type: 3}
+  - <Weapon>k__BackingField: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

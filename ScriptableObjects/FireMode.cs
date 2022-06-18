@@ -5,14 +5,11 @@ namespace WeaponSystem
     [CreateAssetMenu(menuName = "Weapons/FireMode")]
     public class FireMode : ScriptableObject
     {
-        public int roundBurst;
-        public float coefficient;
-        public bool automatic;
+        public float warmTime;
+        public float chargeTime;
+        public int burstCount = 1;
+        public float burstRate;
         public float roundPerMinute;
-
-        public FireMode Clone(Weapon weapon)
-        {
-            return Instantiate(this);
-        } 
+        public bool automatic;
     }
 }
