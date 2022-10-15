@@ -5,8 +5,8 @@ namespace WeaponSystem
     [CreateAssetMenu(menuName = "Weapons/Weapon")]
     public class Weapon : ScriptableObject
     {
+        public Sprite sprite;
         public Ammunition ammunition;
-        public float damage;
         public int projectileCount = 1;
         public BarrelSlot[] barrelSlots;
         public FireMode[] fireModes;

@@ -11,7 +11,6 @@ namespace WeaponSystem
         private AmmunitionSprite _sprite;
 
         private float _timeToDie;
-        private float _damage;
 
         private Ammunition _ammunition;
         private Action _onHit, _onCollision;
@@ -25,7 +24,7 @@ namespace WeaponSystem
             _transform = transform;
         }
 
-        public void Initialize(Ammunition ammunition, float damage, Vector3 direction, Action onHit, Action onCollision)
+        public void Initialize(Ammunition ammunition, Vector3 direction, Action onHit, Action onCollision)
         {
             _transform.right = direction;
             _transform.localScale = Vector3.one * ammunition.size;
@@ -35,7 +34,6 @@ namespace WeaponSystem
             _timeToDie = Time.time + ammunition.distance / ammunition.speed;
 
             _ammunition = ammunition;
-            _damage = damage;
 
             _onHit = onHit;
             _onCollision = onCollision;
@@ -56,7 +54,7 @@ namespace WeaponSystem
             var takeHit = col.gameObject.GetComponent<ITakeAmmunitionHit>();
             if (takeHit != null)
             {
-                takeHit.Hit(_damage);
+                takeHit.Hit(_ammunition.damage);
                 _onHit?.Invoke();
             }
             else

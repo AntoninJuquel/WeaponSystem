@@ -65,6 +65,8 @@ namespace WeaponSystem
 
         private void OnDropWeapon()
         {
+            CurrentWeaponController.Drop();
+            _weapons.Remove(CurrentWeaponController);
         }
     }
 }

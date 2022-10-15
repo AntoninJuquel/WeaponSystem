@@ -29,6 +29,8 @@ namespace WeaponSystem
             Reloading = new WeaponReloadingState(this);
             OverHeat = new WeaponOverHeatState(this);
             Stored = new WeaponStoredState(this);
+
+            GetComponent<SpriteRenderer>().sprite = Weapon.sprite;
         }
 
         public void SwitchState(WeaponState state)

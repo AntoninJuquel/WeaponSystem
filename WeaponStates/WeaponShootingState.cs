@@ -70,7 +70,7 @@ namespace WeaponSystem
                     var position = Controller.transform.position + Controller.transform.rotation * barrelSlot.position + direction.normalized * Random.Range(minRadius, maxRadius);
 
                     var projectileCore = GameObject.Instantiate(Controller.AmmunitionPrefab, position, Quaternion.identity);
-                    projectileCore.Initialize(Weapon.ammunition, Weapon.damage, direction, OnAmmunitionHit, OnAmmunitionCollision);
+                    projectileCore.Initialize(Weapon.ammunition, direction, OnAmmunitionHit, OnAmmunitionCollision);
                 }
             }
 

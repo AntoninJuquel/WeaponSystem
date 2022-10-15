@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897887e3e4954594a9d96c1aa709cb01, type: 3}
   m_Name: 5.56 NATO
   m_EditorClassIdentifier: 
+  damage: 10
   speed: 50
   distance: 10
   size: 0.1
   gravity: 0
   drag: 0
-  lifetimeLoss: 1
+  lifetimeLoss: 0
   dampen: 0
   sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
@@ -50,4 +51,4 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  physicsMaterial: {fileID: 0}
+  physicsMaterial: {fileID: 6200000, guid: 070e5e6462caaa744a81b7abcca40412, type: 2}

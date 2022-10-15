@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef9aecc0e8d4177818f57ed0d6f066b, type: 3}
   m_Name: Gun
   m_EditorClassIdentifier: 
+  sprite: {fileID: 3625043607559282579, guid: 045b15ec09bba42448d89db77fa6f20a, type: 3}
   ammunition: {fileID: 11400000, guid: 65aa32dfff2ed8948a867f21ce4c80bf, type: 2}
-  damage: 10
   projectileCount: 1
   barrelSlots:
   - barrel: {fileID: 11400000, guid: 408bbcd97def0054b9f02d0f8b28516c, type: 2}
