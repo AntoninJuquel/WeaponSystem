@@ -2,6 +2,6 @@
 {
     public interface ITakeAmmunitionHit
     {
-        void Hit(int amount);
+        public void Hit(float damage);
     }
 }

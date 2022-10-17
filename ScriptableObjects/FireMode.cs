@@ -1,13 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace WeaponSystem
 {
-    [CreateAssetMenu(menuName = "WeaponSystem/FireMode")]
+    [CreateAssetMenu(menuName = "Weapons/FireMode")]
     public class FireMode : ScriptableObject
     {
-        public int roundBurst;
+        public float warmTime;
+        public float chargeTime;
+        public int burstCount = 1;
+        public float burstRate;
+        public float roundPerMinute;
         public bool automatic;
     }
 }

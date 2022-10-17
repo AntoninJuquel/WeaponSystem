@@ -2,9 +2,10 @@
 
 namespace WeaponSystem
 {
-    [CreateAssetMenu(menuName = "WeaponSystem/Ammunition")]
+    [CreateAssetMenu(menuName = "Weapons/Ammunition")]
     public class Ammunition : ScriptableObject
     {
+        public float damage;
         public float speed;
         public float distance;
         public float size;

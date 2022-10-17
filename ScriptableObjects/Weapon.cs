@@ -2,57 +2,46 @@
 
 namespace WeaponSystem
 {
-    [CreateAssetMenu(menuName = "WeaponSystem/Weapon")]
+    [CreateAssetMenu(menuName = "Weapons/Weapon")]
     public class Weapon : ScriptableObject
     {
         public Sprite sprite;
-        public int damage;
-        public float time;
-        public State state;
-        public WeaponBarrelEmission[] barrels;
         public Ammunition ammunition;
-        public MuzzleFlash muzzleFlash;
-
+        public int projectileCount = 1;
+        public BarrelSlot[] barrelSlots;
         public FireMode[] fireModes;
         public int fireModeIndex;
-        public FireMode CurrentFireMode => fireModes[fireModeIndex];
-        public void NextFireMode() => fireModeIndex = (fireModeIndex + 1) % fireModes.Length;
+        public FireMode FireMode => fireModes[fireModeIndex];
+        public Magazine magazine;
+        public Cooler cooler;
 
-        public float fireRate;
-        public float burstRate;
-        public float reloadTime;
-        public float chargeTime;
+        public Weapon Clone()
+        {
+            var clone = Instantiate(this);
 
-        public int heat;
-        public int heatCapacity;
-        public int heatPerShot;
-        public float heatRecoveryRate;
-        public float heatRecoveryDelay;
+            for (var i = 0; i < barrelSlots.Length; i++)
+            {
+                clone.barrelSlots[i].barrel = Instantiate(barrelSlots[i].barrel);
+            }
 
-        public int magazine;
-        public int capacity;
+            for (var i = 0; i < fireModes.Length; i++)
+            {
+                clone.fireModes[i] = Instantiate(fireModes[i]);
+            }
 
-        public float lastTimeHeld;
-        public float TimeElapsed => Time.time - lastTimeHeld;
-    }
+            clone.magazine = Instantiate(magazine);
+            clone.cooler = Instantiate(cooler);
 
-    public enum State
-    {
-        Ready,
-        Charging,
-        Shooting,
-        Cooling,
-        WaitingTriggerUp,
-        Reloading
+            return clone;
+        }
     }
 
     [System.Serializable]
-    public class WeaponBarrelEmission
+    public struct BarrelSlot
     {
         public Barrel barrel;
         public Vector3 position;
         public float angle;
-        public int emissionCount = 1;
-        public float radius = 1;
+        public float radius;
     }
 }
